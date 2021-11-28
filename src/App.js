@@ -22,10 +22,10 @@ function App() {
       setCards(shuffledCards)
       setTurns(0)
   }
-  // this will create a shuffled array above
-  // const handleChoice = (card) => {
-  // choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
-  // }
+  this will create a shuffled array above
+  const handleChoice = (card) => {
+  choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
+  }
 
   return (
     <div className="App">

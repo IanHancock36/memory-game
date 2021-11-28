@@ -2,10 +2,11 @@ import "./SingleCard.css"
 import React,{useState} from 'react'
 
 export default function SingleCard({ card, handleChoice }) {
-
-    handleClick = () => {
-        handleChoice(card)
-    }
+const handleClick=()=> {
+    handleChoice(card)
+    console.log(card)
+}
+   
     return (
         
         <div className="card">
