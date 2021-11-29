@@ -1,5 +1,5 @@
 import './App.css'
-import React ,{useState} from 'react'
+import React ,{useState,useEffect }from 'react'
 import SingleCard from './components/SingleCard'
 const cardImages =[
   {"src": '../img/helmet-1.png'},
@@ -22,12 +22,29 @@ function App() {
       setCards(shuffledCards)
       setTurns(0)
   }
-  this will create a shuffled array above
+  // this will create a shuffled array above
   const handleChoice = (card) => {
   choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
   }
+// compare two cards  
+useEffect(()=> {
+if (choiceOne && choiceTwo){
+  if (choiceOne.src === choiceTwo.src){
+    console.log("these cards match")
+    resetTurn()
+  }else {
+    console.log("the cards didnt match")
+    resetTurn()
+  }
+}
+},[choiceOne,choiceTwo])
 
-  return (
+const resetTurn = () => {
+  setChoiceOne(null)
+  setChoiceTwo(null)
+  setTurns(prevTurns => prevTurns +1)
+}
+return (
     <div className="App">
       <h1>Magic Match</h1>
       <button onClick={shuffleCards}>New Game</button>
@@ -36,7 +53,7 @@ function App() {
     <SingleCard 
     key={card.id} 
     card={card}
-    // handleChoice ={handleChoice}
+    handleChoice ={handleChoice}
     />
    ))}
     </div>
