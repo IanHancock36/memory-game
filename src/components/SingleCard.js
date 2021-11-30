@@ -1,7 +1,7 @@
 import "./SingleCard.css"
 import React,{useState} from 'react'
 
-export default function SingleCard({ card, handleChoice }) {
+export default function SingleCard({ card, handleChoice, flipped  }) {
 const handleClick=()=> {
     handleChoice(card)
     console.log(card)
@@ -10,7 +10,7 @@ const handleClick=()=> {
     return (
         
         <div className="card">
-            <div>
+            <div className={flipped ?  "flipped" : ""} >
                 <img className="front" src={card.src} alt="card front" />
                 <img
                     className="back"

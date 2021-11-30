@@ -34,7 +34,7 @@ if (choiceOne && choiceTwo){
     resetTurn()
   }else {
     console.log("the cards didnt match")
-    resetTurn()
+   setTimeout (()=> resetTurn(),1000)
   }
 }
 },[choiceOne,choiceTwo])
@@ -54,6 +54,7 @@ return (
     key={card.id} 
     card={card}
     handleChoice ={handleChoice}
+    flipped={card === choiceOne || card === choiceTwo || card.matched}
     />
    ))}
     </div>
