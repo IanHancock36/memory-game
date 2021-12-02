@@ -20,6 +20,8 @@ function App() {
       // this below spreading gives two sets of 6 so 12 needed
       ...cardImages, ...cardImages].sort(()=> Math.random() -0.5 )
       .map((card)=> ({...card, id: Math.random()}))
+      setChoiceOne(null)
+      setChoiceTwo(null)
       setCards(shuffledCards)
       setTurns(0)
   }
@@ -29,8 +31,7 @@ function App() {
   }
 // compare two cards  
 useEffect(()=> {
-  
-if (choiceOne && choiceTwo){
+  if (choiceOne && choiceTwo){
   setDisabled(true)
   if (choiceOne.src === choiceTwo.src){
     console.log("these cards match")
@@ -48,6 +49,10 @@ const resetTurn = () => {
   setTurns(prevTurns => prevTurns +1)
   setDisabled(false)
 }
+// start the game automatically
+useEffect (()=> {
+shuffleCards()
+},[])
 return (
     <div className="App">
       <h1>Magic Match</h1>
@@ -62,6 +67,10 @@ return (
     disabled ={disabled}
     />
    ))}
+    </div>
+
+    <div style={{flexDirection:"row" , alignItems:'center'}}>
+    <p>Turns :  {turns} </p>
     </div>
     </div>
   );
